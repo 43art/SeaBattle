@@ -1,0 +1,16 @@
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.exe
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.deps.json
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.runtimeconfig.json
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.runtimeconfig.dev.json
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.dll
+C:\Developing\C Sharp\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.pdb
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csprojAssemblyReference.cache
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csproj.GenerateResource.cache
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.AssemblyInfoInputs.cache
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.AssemblyInfo.cs
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csproj.CoreCompileInputs.cache
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.dll
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.pdb
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.genruntimeconfig.cache
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Connect.resources
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.GameStart.resources

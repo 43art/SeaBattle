@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\PC\\source\\repos\\SeaBattle\\SeaBattle\\SeaBattle.csproj": {}
+    "C:\\Developing\\C Sharp\\SeaBattle\\SeaBattle\\SeaBattle.csproj": {}
   },
   "projects": {
-    "C:\\Users\\PC\\source\\repos\\SeaBattle\\SeaBattle\\SeaBattle.csproj": {
+    "C:\\Developing\\C Sharp\\SeaBattle\\SeaBattle\\SeaBattle.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\PC\\source\\repos\\SeaBattle\\SeaBattle\\SeaBattle.csproj",
+        "projectUniqueName": "C:\\Developing\\C Sharp\\SeaBattle\\SeaBattle\\SeaBattle.csproj",
         "projectName": "SeaBattle",
-        "projectPath": "C:\\Users\\PC\\source\\repos\\SeaBattle\\SeaBattle\\SeaBattle.csproj",
-        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\PC\\source\\repos\\SeaBattle\\SeaBattle\\obj\\",
+        "projectPath": "C:\\Developing\\C Sharp\\SeaBattle\\SeaBattle\\SeaBattle.csproj",
+        "packagesPath": "C:\\Users\\AHTOH\\.nuget\\packages\\",
+        "outputPath": "C:\\Developing\\C Sharp\\SeaBattle\\SeaBattle\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AHTOH\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +57,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }
