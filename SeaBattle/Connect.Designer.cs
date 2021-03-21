@@ -38,9 +38,10 @@ namespace SeaBattle
             // 
             this.textBox1.Location = new System.Drawing.Point(12, 27);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "Порт";
             this.textBox1.Size = new System.Drawing.Size(61, 23);
             this.textBox1.TabIndex = 0;
-            this.textBox1.Text = "Порт";
+            this.textBox1.Text = "8000";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1

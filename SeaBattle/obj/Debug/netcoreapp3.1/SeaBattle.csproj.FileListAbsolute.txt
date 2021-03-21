@@ -14,3 +14,4 @@ C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.pdb
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.genruntimeconfig.cache
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Connect.resources
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.GameStart.resources
+C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Properties.Resources.resources

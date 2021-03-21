@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace SeaBattle
 {
@@ -17,8 +18,8 @@ namespace SeaBattle
                 for (int j = 0; j < 10; j++)
                 {
                     Cell cell = new Cell();
-                    cell.setX(i * 50);
-                    cell.setY(j * 50);
+                    cell.setX(i * 50 + 2);
+                    cell.setY(j * 50 + 2);
                     Field[i,j] = cell;
                 }
             }
@@ -30,7 +31,12 @@ namespace SeaBattle
             {
                 cell.draw(g);
             }
+        }
 
+        //Возвращает клетку по координате нажатия
+        public Cell getCellByCoordinate(int i, int j)
+        {
+            return Field[(i + 2) / 50, (j + 2) / 50];
         }
 
     }
