@@ -48,5 +48,23 @@ namespace SeaBattle
                 MessageBox.Show("Проверьте правильность ввода чисел!");
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int port = 0;
+            try
+            {
+                ip = IPEndPoint.Parse(textBox2.Text.ToString());
+                //Раскомментить для отображения порта
+                MessageBox.Show(ip.ToString());
+
+                GameStart newForm = new GameStart();
+                newForm.Show();
+            }
+            catch//Обработка исключений – произошла ошибка
+            {
+                MessageBox.Show("Проверьте правильность ввода чисел!");
+            }
+        }
     }
 }
