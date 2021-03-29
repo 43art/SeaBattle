@@ -33,11 +33,18 @@ namespace SeaBattle
             }
         }
 
-        //Возвращает клетку по координате нажатия
+        //Возвращает клетку по координате 
         public Cell getCellByCoordinate(int i, int j)
         {
             return Field[(i + 2) / 50, (j + 2) / 50];
         }
 
+        //Возвращает клетку по индексам
+        public Cell getCell(int i, int j)
+        {
+            if ((i < 10) && (j < 10))
+                return Field[i, j];
+            else return null;
+        }
     }
 }
