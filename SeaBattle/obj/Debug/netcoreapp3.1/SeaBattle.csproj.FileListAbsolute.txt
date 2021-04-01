@@ -15,3 +15,20 @@ C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.genr
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Connect.resources
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.GameStart.resources
 C:\Developing\C Sharp\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Properties.Resources.resources
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.exe
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.deps.json
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.runtimeconfig.json
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.runtimeconfig.dev.json
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.dll
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\bin\Debug\netcoreapp3.1\SeaBattle.pdb
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csprojAssemblyReference.cache
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Connect.resources
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.GameStart.resources
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.Properties.Resources.resources
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csproj.GenerateResource.cache
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.AssemblyInfoInputs.cache
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.AssemblyInfo.cs
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.csproj.CoreCompileInputs.cache
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.dll
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.pdb
+C:\Химшиашвили\Учеба\C#\SeaBattle\SeaBattle\obj\Debug\netcoreapp3.1\SeaBattle.genruntimeconfig.cache
