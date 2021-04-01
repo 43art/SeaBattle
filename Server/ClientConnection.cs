@@ -27,18 +27,16 @@ namespace Server {
         }
 
         private void processRequest(string message, NetworkStream stream) {
-            string[] parameters = message.Split(';');
+            string[] parameters = message.Split(':');
             string answer;
             if (parameters[0] == "connect") {
                 answer = (id == 1) ? "true" : "false";
                 sendAnswer(answer, stream);
                 return;
             }
-                
-
-            // TODO:
-            byte[] data = Encoding.Unicode.GetBytes("SERVER ACCEPTED: " + message);
-            stream.Write(data, 0, data.Length); ;
+            else {
+                sendAnswer(parameters[0], otherPlayer.getStream());
+            }
         }
 
         public void process() {
@@ -56,7 +54,7 @@ namespace Server {
                     while (stream.DataAvailable);
 
                     string message = sb.ToString();
-                    Console.WriteLine(message);
+                    Console.WriteLine("Client" + id.ToString() + ": " + message);
                     processRequest(message, stream);
                 }
             }
@@ -69,6 +67,10 @@ namespace Server {
                 if (client != null)
                     client.Close();
             }
+        }
+
+        public NetworkStream getStream() {
+            return client.GetStream();
         }
     }
 }

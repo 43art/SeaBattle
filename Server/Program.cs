@@ -7,6 +7,7 @@ using System.Threading;
 namespace Server {
 
     class Program {
+        const string IP = "127.0.0.1";
         const int port = 6969; // порт для прослушивания подключений
         static ClientConnection client1;
         static ClientConnection client2;
@@ -14,7 +15,7 @@ namespace Server {
         static void Main(string[] args) {
             TcpListener listener = null;
             try {
-                IPAddress localAddr = IPAddress.Parse("127.0.0.1");
+                IPAddress localAddr = IPAddress.Parse(IP);
                 listener = new TcpListener(localAddr, port);
                 listener.Start();
                 Console.WriteLine("Wait for connection...");
