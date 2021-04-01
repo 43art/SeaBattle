@@ -43,7 +43,7 @@ namespace SeaBattle
             this.PortTextBox.PlaceholderText = "Порт";
             this.PortTextBox.Size = new System.Drawing.Size(61, 23);
             this.PortTextBox.TabIndex = 0;
-            this.PortTextBox.Text = "8000";
+            this.PortTextBox.Text = "6969";
             this.PortTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1

@@ -17,7 +17,7 @@ namespace SeaBattle
         int tds = 2;    //three-deck    ship
         int fds = 1;    //four-deck     ship
 
-        public GameStart()
+        public GameStart() 
         {
             InitializeComponent();
             Set_labels();
