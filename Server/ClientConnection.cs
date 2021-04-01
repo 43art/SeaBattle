@@ -24,7 +24,7 @@ namespace Server {
 
         // Утилита отправки данных
         private void sendData(string msg, NetworkStream stream) {
-            byte[] data = Encoding.Unicode.GetBytes(msg);
+            byte[] data = Encoding.UTF8.GetBytes(msg);
             stream.Write(data, 0, data.Length);
         }
 
