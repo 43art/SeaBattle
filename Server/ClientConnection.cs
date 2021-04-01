@@ -7,10 +7,11 @@ using System.Net;
 using System.Net.Sockets;
 
 namespace Server {
+    // Класс обработки соединения каждого игрока
     class ClientConnection {
         TcpClient client;
-        int id = 0;
-        public ClientConnection otherPlayer = null;
+        int id; // Номер игрока - первый/второй
+        public ClientConnection otherPlayer = null; // ссылка на другого игрока, чтобы отправлять ему данные
 
         public ClientConnection(TcpClient nclient, int nid) {
             this.client = nclient;
@@ -21,24 +22,27 @@ namespace Server {
             this.otherPlayer = nOtherPlayer;
         }
 
-        private void sendAnswer(string answer, NetworkStream stream) {
-            byte[] data = Encoding.Unicode.GetBytes(answer);
+        // Утилита отправки данных
+        private void sendData(string msg, NetworkStream stream) {
+            byte[] data = Encoding.Unicode.GetBytes(msg);
             stream.Write(data, 0, data.Length);
         }
 
+        // Метод непосредственной обработки входящего сообщения
         private void processRequest(string message, NetworkStream stream) {
             string[] parameters = message.Split(':');
             string answer;
             if (parameters[0] == "connect") {
                 answer = (id == 1) ? "true" : "false";
-                sendAnswer(answer, stream);
+                sendData(answer, stream);
                 return;
             }
             else {
-                sendAnswer(parameters[0], otherPlayer.getStream());
+                sendData(parameters[0], otherPlayer.getStream());
             }
         }
 
+        // Общий метод получения сообщений
         public void process() {
             NetworkStream stream = null;
             try {
@@ -69,6 +73,7 @@ namespace Server {
             }
         }
 
+        // Метод получения потока записи
         public NetworkStream getStream() {
             return client.GetStream();
         }
