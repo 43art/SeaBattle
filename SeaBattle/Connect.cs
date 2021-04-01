@@ -10,60 +10,22 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 
-namespace SeaBattle
-{
-    public partial class Connect : Form
-    {
-        public Connect()
-        {
+namespace SeaBattle {
+    public partial class Connect : Form {
+        IPEndPoint ip;
+
+        public Connect() {
             InitializeComponent();
         }
 
-        //IPAddress ip = IPAddress.Parse("127.0.0.1");
-        IPEndPoint ip;
-        
-        private void button1_Click(object sender, EventArgs e)
-        {
-            int port = 0;
-            try
-            {
-                port = Convert.ToInt32(textBox1.Text);
-                //ip = IPAddress.Parse("127.0.0.1");
-                if ((port >= 0) && (port < 65536))
-                {
-                    ip = IPEndPoint.Parse("127.0.0.1:" + port.ToString());
-                    //Раскомментить для отображения порта
-                    //MessageBox.Show(ip.ToString());
-
-                    GameStart newForm = new GameStart();
-                    newForm.Show();
-                    
-                    //Продумать как закрыть форму с коннектом, не закрывая все остальное
-                }
-                else
-                    MessageBox.Show("Некорректное значение порта подключения");
-            }
-            catch//Обработка исключений – произошла ошибка
-            {
-                MessageBox.Show("Проверьте правильность ввода чисел!");
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            int port = 0;
-            try
-            {
-                ip = IPEndPoint.Parse(textBox2.Text.ToString());
-                //Раскомментить для отображения порта
-                MessageBox.Show(ip.ToString());
-
+        private void gamestart_button_Click(object sender, EventArgs e) {
+            try {
+                ip = IPEndPoint.Parse(IPTextBox.Text + ':' + PortTextBox.Text);
                 GameStart newForm = new GameStart();
                 newForm.Show();
             }
-            catch//Обработка исключений – произошла ошибка
-            {
-                MessageBox.Show("Проверьте правильность ввода чисел!");
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message);
             }
         }
     }
