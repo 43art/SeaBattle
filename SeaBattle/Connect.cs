@@ -37,12 +37,12 @@ namespace SeaBattle {
         }
 
         // Утилита отправки данных
-        private void sendData(string msg) {
+        public void sendData(string msg) {
             byte[] data = Encoding.UTF8.GetBytes(msg);
             stream.Write(data, 0, data.Length);
         }
 
-        private string receiveData() {
+        public string receiveData() {
             // получаем ответ
             byte[] data = new byte[1024]; // буфер для получаемых данных
             StringBuilder builder = new StringBuilder();
