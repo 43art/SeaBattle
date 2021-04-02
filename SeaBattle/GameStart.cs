@@ -16,11 +16,13 @@ namespace SeaBattle
         int dds = 3;    //double-deck   ship
         int tds = 2;    //three-deck    ship
         int fds = 1;    //four-deck     ship
+        bool is_your_turn = false;
 
-        public GameStart() 
+        public GameStart(bool nIs_your_turn) 
         {
             InitializeComponent();
             Set_labels();
+            is_your_turn = nIs_your_turn;
         }
 
         private void GameStart_Paint(object sender, PaintEventArgs e)

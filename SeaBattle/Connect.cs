@@ -12,7 +12,8 @@ using System.Net.Sockets;
 
 namespace SeaBattle {
     public partial class Connect : Form {
-        IPEndPoint ip;
+        TcpClient client = null;
+        NetworkStream stream = null;
 
         public Connect() {
             InitializeComponent();
@@ -20,13 +21,38 @@ namespace SeaBattle {
 
         private void gamestart_button_Click(object sender, EventArgs e) {
             try {
-                ip = IPEndPoint.Parse(IPTextBox.Text + ':' + PortTextBox.Text);
-                GameStart newForm = new GameStart();
+                string ip = IPTextBox.Text;
+                int port = Convert.ToInt32(PortTextBox.Text);
+                client = new TcpClient(ip, port);
+                stream = client.GetStream();
+                sendData("connect");
+                string turn = receiveData();
+                bool is_your_turn = (turn == "true");
+                GameStart newForm = new GameStart(is_your_turn);
                 newForm.Show();
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        // Утилита отправки данных
+        private void sendData(string msg) {
+            byte[] data = Encoding.UTF8.GetBytes(msg);
+            stream.Write(data, 0, data.Length);
+        }
+
+        private string receiveData() {
+            // получаем ответ
+            byte[] data = new byte[1024]; // буфер для получаемых данных
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0;
+            do {
+                bytes = stream.Read(data, 0, data.Length);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (stream.DataAvailable);
+            return builder.ToString();
         }
     }
 }
