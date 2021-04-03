@@ -32,6 +32,12 @@ namespace SeaBattle
                 this.Text = "Первый игрок";
             else
                 this.Text = "Второй игрок";
+            //Test_Set_Ships();
+        }
+
+        // TODO: Delete k huyam
+        private void Test_Set_Ships() {
+            //startfield.getCell()
         }
 
         private void GameStart_Paint(object sender, PaintEventArgs e)
@@ -94,9 +100,8 @@ namespace SeaBattle
             if ((e.X <= 1100) && (e.X > 600) && (e.Y < 498))
             {
                 if (!is_your_turn)
-                {
                     return;
-                }
+
                 if (e.Button.ToString() == "Left")
                 {
                     cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
@@ -105,16 +110,19 @@ namespace SeaBattle
                     string result = receiveData();
 
                     Graphics g = CreateGraphics();
-                    if (result == "true")
+                    if (result == "true") {
                         cell.setState(5);
+                        cell.draw(g);
+                        Checkships(cell);
+                    }
                     else
                     {
                         cell.setState(1);
                         is_your_turn = false;
+                        cell.draw(g);
+                        Checkships(cell);
+                        waitForShot();
                     }
-
-                    cell.draw(g);
-                    Checkships(cell);
                 }
 
 
@@ -227,18 +235,39 @@ namespace SeaBattle
             Set_labels();
         }
 
+        private void waitForShot() {
+            string shot = receiveData();
+            string[] parameters = shot.Split(':');
+            string[] indexes = parameters[1].Split('_');
+            int i = Convert.ToInt32(indexes[0]);
+            int j = Convert.ToInt32(indexes[1]);
+            Cell cell = startfield.getCellByCoordinate(i-600, j);
+            int state = cell.getState();
+
+            if (state == 2)
+            {
+                cell.setState(3);
+                sendData("true");
+            }
+            else
+            {
+                sendData("false");
+            }
+        }
+
         private void button1_MouseClick(object sender, MouseEventArgs e)
         {
             ShipRemaining();
 
             if ((sds == 0) && (dds == 0) && (tds == 0) && (fds == 0))
             {
-                MessageBox.Show("Полный вперед!\nПоддать жару!");
                 label1.Visible = false;
                 label2.Visible = false;
                 label3.Visible = false;
                 label4.Visible = false;
                 button1.Visible = false;
+                if (!is_your_turn)
+                    waitForShot();
             }
             else 
             {
@@ -268,7 +297,7 @@ namespace SeaBattle
             do
             {
                 bytes = client.GetStream().Read(data, 0, data.Length);
-                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                builder.Append(Encoding.UTF8.GetString(data, 0, bytes));
             }
             while (client.GetStream().DataAvailable);
             return builder.ToString();

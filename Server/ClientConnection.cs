@@ -38,7 +38,7 @@ namespace Server {
                 return;
             }
             else {
-                sendData(parameters[0], otherPlayer.getStream());
+                sendData(message, otherPlayer.getStream());
             }
         }
 
