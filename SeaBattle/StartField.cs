@@ -10,7 +10,7 @@ namespace SeaBattle
     {
         private Cell [,] Field;
 
-        public StartField()
+        public StartField(int StartPosY, int StartPosX)
         {
             Field = new Cell[10, 10];
             for (int i = 0; i < 10; i++)
@@ -18,8 +18,8 @@ namespace SeaBattle
                 for (int j = 0; j < 10; j++)
                 {
                     Cell cell = new Cell();
-                    cell.setX(i * 50 + 2);
-                    cell.setY(j * 50 + 2);
+                    cell.setX(i * 50 + StartPosX);
+                    cell.setY(j * 50 + StartPosY);
                     Field[i,j] = cell;
                 }
             }

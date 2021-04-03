@@ -5,30 +5,40 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
 
 namespace SeaBattle
 {
     public partial class GameStart : Form
     {
-        StartField startfield = new StartField();
+        StartField startfield = new StartField(0,0);
+        StartField opponentfield = new StartField (0, 600);
         int i = 0;
         int sds = 4;    //single-deck   ship
         int dds = 3;    //double-deck   ship
         int tds = 2;    //three-deck    ship
         int fds = 1;    //four-deck     ship
         bool is_your_turn = false;
+        TcpClient client = null;
 
-        public GameStart(bool nIs_your_turn) 
+        public GameStart(bool nIs_your_turn, TcpClient nClient) 
         {
             InitializeComponent();
             Set_labels();
             is_your_turn = nIs_your_turn;
+            client = nClient;
+            if (is_your_turn)
+                this.Text = "Первый игрок";
+            else
+                this.Text = "Второй игрок";
         }
 
         private void GameStart_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = CreateGraphics();
             startfield.draw(g);
+            opponentfield.draw(g);
         }
 
         //устанавливает лейблы с остатками кораблей на форме
@@ -80,6 +90,43 @@ namespace SeaBattle
             }
             //Проверка на остаток кораблей
             ShipRemaining();
+
+            if ((e.X <= 1100) && (e.X > 600) && (e.Y < 498))
+            {
+                if (!is_your_turn)
+                {
+                    return;
+                }
+                if (e.Button.ToString() == "Left")
+                {
+                    cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
+                    string msg = "shot:" + cell.getX().ToString() + '_' + cell.getY().ToString();
+                    sendData(msg);
+                    string result = receiveData();
+
+                    Graphics g = CreateGraphics();
+                    if (result == "true")
+                        cell.setState(5);
+                    else
+                    {
+                        cell.setState(1);
+                        is_your_turn = false;
+                    }
+
+                    cell.draw(g);
+                    Checkships(cell);
+                }
+
+
+                if (e.Button.ToString() == "Right")
+                {
+                    cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
+                    cell.setState(0);
+                    Graphics g = CreateGraphics();
+                    cell.draw(g);
+                }
+
+            }
         }
 
         //Проверка соседствующих клеток на наличие кораблей
@@ -177,7 +224,6 @@ namespace SeaBattle
                     }
                 }
             }
-
             Set_labels();
         }
 
@@ -188,6 +234,11 @@ namespace SeaBattle
             if ((sds == 0) && (dds == 0) && (tds == 0) && (fds == 0))
             {
                 MessageBox.Show("Полный вперед!\nПоддать жару!");
+                label1.Visible = false;
+                label2.Visible = false;
+                label3.Visible = false;
+                label4.Visible = false;
+                button1.Visible = false;
             }
             else 
             {
@@ -199,8 +250,29 @@ namespace SeaBattle
                 //Возвращение исходных значений переменных
                 Reset();
             }
-           
-
         }
+
+        // Утилита отправки данных
+        public void sendData(string msg)
+        {
+            byte[] data = Encoding.UTF8.GetBytes(msg);
+            client.GetStream().Write(data, 0, data.Length);
+        }
+
+        public string receiveData()
+        {
+            // получаем ответ
+            byte[] data = new byte[1024]; // буфер для получаемых данных
+            StringBuilder builder = new StringBuilder();
+            int bytes = 0;
+            do
+            {
+                bytes = client.GetStream().Read(data, 0, data.Length);
+                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+            }
+            while (client.GetStream().DataAvailable);
+            return builder.ToString();
+        }
+
     }
 }

@@ -28,7 +28,7 @@ namespace SeaBattle {
                 sendData("connect");
                 string turn = receiveData();
                 bool is_your_turn = (turn == "true");
-                GameStart newForm = new GameStart(is_your_turn);
+                GameStart newForm = new GameStart(is_your_turn, client);
                 newForm.Show();
             }
             catch (Exception ex) {
@@ -49,7 +49,7 @@ namespace SeaBattle {
             int bytes = 0;
             do {
                 bytes = stream.Read(data, 0, data.Length);
-                builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                builder.Append(Encoding.UTF8.GetString(data, 0, bytes));
             }
             while (stream.DataAvailable);
             return builder.ToString();
