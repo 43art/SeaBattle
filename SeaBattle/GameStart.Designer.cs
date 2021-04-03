@@ -40,49 +40,49 @@ namespace SeaBattle
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(530, 9);
+            this.label1.Location = new System.Drawing.Point(12, 576);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 23);
+            this.label1.Size = new System.Drawing.Size(334, 23);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Однопалубных кораблей осталось: 4";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(530, 32);
+            this.label2.Location = new System.Drawing.Point(12, 599);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 23);
+            this.label2.Size = new System.Drawing.Size(328, 23);
             this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.label2.Text = "Двухпалубных кораблей осталось: 3";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(530, 55);
+            this.label3.Location = new System.Drawing.Point(12, 622);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 23);
+            this.label3.Size = new System.Drawing.Size(326, 23);
             this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.label3.Text = "Трехпалубных кораблей осталось: 2";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(530, 78);
+            this.label4.Location = new System.Drawing.Point(12, 645);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(61, 23);
+            this.label4.Size = new System.Drawing.Size(361, 23);
             this.label4.TabIndex = 3;
-            this.label4.Text = "label4";
+            this.label4.Text = "Четырехпалубных кораблей осталось: 1";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(530, 105);
+            this.button1.Location = new System.Drawing.Point(379, 640);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(180, 28);
             this.button1.TabIndex = 4;
-            this.button1.Text = "Готово!";
+            this.button1.Text = "Готов";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
@@ -90,7 +90,7 @@ namespace SeaBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1099, 679);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -98,7 +98,7 @@ namespace SeaBattle
             this.Controls.Add(this.label1);
             this.Name = "GameStart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GameStart";
+            this.Text = "Готов";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameStart_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GameStart_MouseClick);
             this.ResumeLayout(false);
