@@ -46,5 +46,16 @@ namespace SeaBattle
                 return Field[i, j];
             else return null;
         }
+
+        //Проверка конца игры
+        public bool checkFinish()
+        {
+            foreach (Cell cell in Field)
+            {
+                if (cell.getState() == 2)
+                    return false;
+            }
+            return true;
+        }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iFBJZmfb7G5eYByuHI36+I0daTQKh8nnwL24fP4XmVFAKxM8+zxTOrLOYm6egpXavMi7FqSVpIDvoo0cyWnNpA==",
+  "dgSpecHash": "hka2MpBedgicq7t3aVUiSwTr/8OHumynGnHg9nSYvf/PUtA7YCXj3DTrPnF6j5TwG8YuOnptbwqEnF+br5IFng==",
   "success": true,
-  "projectFilePath": "C:\\Химшиашвили\\Учеба\\C#\\SeaBattle\\Server\\Server.csproj",
+  "projectFilePath": "C:\\Developing\\C Sharp\\SeaBattle\\Server\\Server.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

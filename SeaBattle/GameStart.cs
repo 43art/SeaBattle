@@ -154,6 +154,9 @@ namespace SeaBattle {
                     cell.draw(g);
                 }
             }
+
+            if (startfield.checkFinish()) MessageBox.Show("Поражение " + this.Text.ToString());
+            this.Enabled = false;
         }
 
         // Проверка соседствующих клеток на наличие кораблей
