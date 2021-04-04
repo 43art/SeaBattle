@@ -97,6 +97,8 @@ namespace SeaBattle {
         private void GameStart_MouseClick(object sender, MouseEventArgs e) {
             Cell cell = null;
             if ((e.X < 498) && (e.Y < 498)) {
+                if (!button1.Visible)
+                    return;
                 if (e.Button.ToString() == "Left") {
                     cell = startfield.getCellByCoordinate(e.X, e.Y);
                     cell.setState(2);
