@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace SeaBattle {
     public partial class GameStart : Form {
@@ -94,33 +95,36 @@ namespace SeaBattle {
             }
         }
 
+        private void setShip(MouseEventArgs e) {
+            Cell cell = null;
+
+            if (e.Button.ToString() == "Left") {
+                cell = startfield.getCellByCoordinate(e.X, e.Y);
+                cell.setState(2);
+                Graphics g = CreateGraphics();
+
+                Checkships(cell);
+                cell.draw(g);
+            }
+            if (e.Button.ToString() == "Right") {
+                cell = startfield.getCellByCoordinate(e.X, e.Y);
+                cell.setState(0);
+                Graphics g = CreateGraphics();
+                cell.draw(g);
+            }
+            ShipRemaining();
+        }
+
         // Обработка событий мыши на клетки игрового поля
         private void GameStart_MouseClick(object sender, MouseEventArgs e) {
-            Cell cell = null;
             if ((e.X < 498) && (e.Y < 498)) {
                 if (!button1.Visible)
                     return;
-                if (e.Button.ToString() == "Left") {
-                    cell = startfield.getCellByCoordinate(e.X, e.Y);
-                    cell.setState(2);
-                    Graphics g = CreateGraphics();
-
-                    Checkships(cell);
-                    cell.draw(g);
-                }
-
-
-                if (e.Button.ToString() == "Right") {
-                    cell = startfield.getCellByCoordinate(e.X, e.Y);
-                    cell.setState(0);
-                    Graphics g = CreateGraphics();
-                    cell.draw(g);
-                }
-
+                setShip(e);
+                return;
             }
 
-            ShipRemaining();
-
+            Cell cell = null;
             if ((e.X <= 1100) && (e.X > 600) && (e.Y < 498)) {
                 if (!is_your_turn)
                     return;
@@ -129,34 +133,37 @@ namespace SeaBattle {
                     cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
                     string msg = "shot:" + cell.getX().ToString() + '_' + cell.getY().ToString();
                     sendData(msg);
-                    string result = receiveData();
+                    string result = "";
+                    try {
+                        result = receiveData();
+                    }
+                    catch {
+                        MessageBox.Show("Проблемы с сервером");
+                        this.Close();
+                    }
 
                     Graphics g = CreateGraphics();
                     if (result == "true") {
                         cell.setState(5);
                         cell.draw(g);
-                        Checkships(cell);
+                        if (opponentfield.checkFinishOpponent()) {
+                            MessageBox.Show("Победа " + this.Text.ToString() + '!');
+                            this.Close();
+                        }
                     }
                     else {
                         cell.setState(1);
+                        cell.draw(g);
                         is_your_turn = false;
                         WhoTurnLabel.Text = "Сейчас ход противника";
                         WhoTurnLabel.Refresh();
-                        cell.draw(g);
-                        Checkships(cell);
-                        waitForShot();
+                        // На поражение чекаем в waitForShot
+                        // TODO: Вынести в отдельный поток
+                        Thread clientThread = new Thread(new ThreadStart(waitForShot));
+                        clientThread.Start();
                     }
                 }
-                if (e.Button.ToString() == "Right") {
-                    cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
-                    cell.setState(0);
-                    Graphics g = CreateGraphics();
-                    cell.draw(g);
-                }
             }
-
-            if (startfield.checkFinish()) MessageBox.Show("Поражение " + this.Text.ToString());
-            this.Enabled = false;
         }
 
         // Проверка соседствующих клеток на наличие кораблей
@@ -243,7 +250,14 @@ namespace SeaBattle {
 
         // Ожидание хода противника. Прослушивание данных от сервера
         private void waitForShot() {
-            string shot = receiveData();
+            string shot = "";
+            try {
+                shot = receiveData();
+            }
+            catch {
+                MessageBox.Show("Проблемы с сервером");
+                this.Close();
+            }
             string[] parameters = shot.Split(':');
             string[] indexes = parameters[1].Split('_');
             int i = Convert.ToInt32(indexes[0]);
@@ -255,8 +269,11 @@ namespace SeaBattle {
             if (state == 2) {
                 cell.setState(3);
                 cell.draw(g);
-                //this.Refresh();
                 sendData("true");
+                if (startfield.checkFinishSelf()) {
+                    MessageBox.Show("Поражение " + this.Text.ToString());
+                    this.Close();
+                }
                 waitForShot();
             }
             else {
@@ -302,12 +319,13 @@ namespace SeaBattle {
             // Получаем ответ
             byte[] data = new byte[1024]; // Буфер для получаемых данных
             StringBuilder builder = new StringBuilder();
+            NetworkStream stream = client.GetStream();
             int bytes = 0;
             do {
-                bytes = client.GetStream().Read(data, 0, data.Length);
+                bytes = stream.Read(data, 0, data.Length);
                 builder.Append(Encoding.UTF8.GetString(data, 0, bytes));
             }
-            while (client.GetStream().DataAvailable);
+            while (stream.DataAvailable);
             return builder.ToString();
         }
 
