@@ -71,7 +71,8 @@ namespace SeaBattle {
         private void GameStart_Paint(object sender, PaintEventArgs e) {
             Graphics g = CreateGraphics();
             startfield.draw(g);
-            Test_Set_Ships(g);
+            if (button1.Visible)
+                Test_Set_Ships(g);
             opponentfield.draw(g);
         }
 
@@ -146,15 +147,12 @@ namespace SeaBattle {
                         waitForShot();
                     }
                 }
-
-
                 if (e.Button.ToString() == "Right") {
                     cell = opponentfield.getCellByCoordinate(e.X - 600, e.Y);
                     cell.setState(0);
                     Graphics g = CreateGraphics();
                     cell.draw(g);
                 }
-
             }
         }
 
@@ -249,13 +247,19 @@ namespace SeaBattle {
             int j = Convert.ToInt32(indexes[1]);
             Cell cell = startfield.getCellByCoordinate(i - 600, j);
             int state = cell.getState();
+            Graphics g = CreateGraphics();
 
             if (state == 2) {
                 cell.setState(3);
+                cell.draw(g);
+                //this.Refresh();
                 sendData("true");
                 waitForShot();
             }
             else {
+                cell.setState(1);
+                cell.draw(g);
+                //this.Refresh();
                 sendData("false");
                 is_your_turn = true;
                 WhoTurnLabel.Text = "Сейчас ваш ход";
