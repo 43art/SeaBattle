@@ -34,6 +34,7 @@ namespace SeaBattle
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.WhoTurnLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -86,11 +87,20 @@ namespace SeaBattle
             this.button1.UseVisualStyleBackColor = true;
             this.button1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.button1_MouseClick);
             // 
+            // WhoTurnLabel
+            // 
+            this.WhoTurnLabel.AutoSize = true;
+            this.WhoTurnLabel.Location = new System.Drawing.Point(734, 596);
+            this.WhoTurnLabel.Name = "WhoTurnLabel";
+            this.WhoTurnLabel.Size = new System.Drawing.Size(0, 15);
+            this.WhoTurnLabel.TabIndex = 5;
+            // 
             // GameStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1099, 679);
+            this.Controls.Add(this.WhoTurnLabel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -113,5 +123,6 @@ namespace SeaBattle
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label WhoTurnLabel;
     }
 }

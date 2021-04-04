@@ -29,11 +29,18 @@ namespace SeaBattle {
                 string turn = receiveData();
                 bool is_your_turn = (turn == "true");
                 GameStart newForm = new GameStart(is_your_turn, client);
+                this.Hide();
+                newForm.FormClosed += (s, args) => this.Close();
                 newForm.Show();
+                
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void NewForm_FormClosed(object sender, FormClosedEventArgs e) {
+            throw new NotImplementedException();
         }
 
         // Утилита отправки данных

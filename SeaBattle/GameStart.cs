@@ -25,10 +25,14 @@ namespace SeaBattle {
             Set_labels();
             is_your_turn = nIs_your_turn;
             client = nClient;
-            if (is_your_turn)
+            if (is_your_turn) {
                 this.Text = "Первый игрок";
-            else
+                WhoTurnLabel.Text = "Сейчас ваш ход";
+            }
+            else {
                 this.Text = "Второй игрок";
+                WhoTurnLabel.Text = "Сейчас ход противника";
+            }
         }
 
         private void Test_Set_Ships(Graphics g) {
@@ -133,6 +137,8 @@ namespace SeaBattle {
                     else {
                         cell.setState(1);
                         is_your_turn = false;
+                        WhoTurnLabel.Text = "Сейчас ход противника";
+                        WhoTurnLabel.Refresh();
                         cell.draw(g);
                         Checkships(cell);
                         waitForShot();
@@ -245,9 +251,12 @@ namespace SeaBattle {
             if (state == 2) {
                 cell.setState(3);
                 sendData("true");
+                waitForShot();
             }
             else {
                 sendData("false");
+                is_your_turn = true;
+                WhoTurnLabel.Text = "Сейчас ваш ход";
             }
         }
 
