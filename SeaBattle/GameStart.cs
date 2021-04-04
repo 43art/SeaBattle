@@ -158,7 +158,6 @@ namespace SeaBattle {
                         WhoTurnLabel.Text = "Сейчас ход противника";
                         WhoTurnLabel.Refresh();
                         // На поражение чекаем в waitForShot
-                        // TODO: Вынести в отдельный поток
                         Thread clientThread = new Thread(new ThreadStart(waitForShot));
                         clientThread.Start();
                     }
@@ -283,6 +282,7 @@ namespace SeaBattle {
                 sendData("false");
                 is_your_turn = true;
                 WhoTurnLabel.Text = "Сейчас ваш ход";
+                this.Refresh();
             }
         }
 
@@ -295,8 +295,10 @@ namespace SeaBattle {
                 label3.Visible = false;
                 label4.Visible = false;
                 button1.Visible = false;
-                if (!is_your_turn)
-                    waitForShot();
+                if (!is_your_turn) {
+                    Thread clientThread = new Thread(new ThreadStart(waitForShot));
+                    clientThread.Start();
+                }
             }
             else {
                 MessageBox.Show("Осталось расположить " + sds.ToString() + " однопалубных кораблей\n" +
@@ -328,6 +330,5 @@ namespace SeaBattle {
             while (stream.DataAvailable);
             return builder.ToString();
         }
-
     }
 }
